@@ -33,7 +33,7 @@ export default function RootLayout({
           disableTransitionOnChange
           enableSystem
         >
-          <div className="flex flex-col min-h-[100dvh]">
+          <div className="flex flex-col min-h-dvh">
             <Nav />
             <main className="w-full flex flex-1 flex-col justify-start mt-20 pb-10">
               {children}

@@ -8,10 +8,10 @@ import { Skills } from "@/components/skills";
 
 const Page = () => {
   return (
-    <div className="flex flex-1 w-full flex-col justify-center min-h-[100dvh] pt-24  ">
+    <div className="flex flex-1 w-full flex-col justify-center min-h-dvh pt-24  ">
       <Hero />
-      <Projects />
       <Experience />
+      <Projects />
       <Education />
       <Skills />
     </div>
