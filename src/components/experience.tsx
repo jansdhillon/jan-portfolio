@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import ubcLogo from "../../public/ubc.png";
 import cseLogo from "../../public/cse.jpg";
 import atLogo from "../../public/at-yellow.png";
+import canonicalLogo from "../../public/canonical.jpg";
 
 interface ExperienceItem {
   logo: string | StaticImageData;
@@ -27,54 +27,75 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
   const companyLines = company.split("|");
 
   return (
-    <div>
-      <Card className="h-full flex flex-col rounded-2xl shadow-sm">
-        <CardContent className="flex-grow pt-6 px-6">
-          <div className="flex flex-col gap-8 ">
-            <div className={`flex items-center justify-center space-x-5`}>
-              <div className="relative h-[30px] w-[30px]">
-                <Image
-                  fill
-                  src={logo}
-                  alt={`${companyLines[0]} Logo`}
-                  className="object-contain"
-                />
-              </div>
-              <div className="text-base md:text-lg font-medium text-center line-clamp-3">
-                {companyLines.map((line, index) => (
-                  <div key={index}>{line}</div>
-                ))}
-              </div>
+    <Card className="h-full flex flex-col rounded-2xl shadow-sm">
+      <CardContent className="grow pt-6 px-6">
+        <div className="flex flex-col gap-8 ">
+          <div className={`flex items-center justify-center space-x-5`}>
+            <div className="relative h-[30px] w-[30px]">
+              <Image
+                fill
+                src={logo}
+                alt={`${companyLines[0]} Logo`}
+                className="object-contain"
+              />
             </div>
-            <div className="flex-col space-y-3 font-medium text-muted-foreground text-center text-sm md:text-base ">
-              <div>{title}</div>
-              <div>{description}</div>
-            </div>
-            <ul className="list-disc space-y-2 text-sm md:text-base text-left pl-5 leading-loose">
-              {responsibilities.map((item, index) => (
-                <li key={index} className="pl-1">
-                  <span className="inline-block align-top">{item}</span>
-                </li>
+            <div className="text-base md:text-lg font-medium text-center line-clamp-3">
+              {companyLines.map((line, index) => (
+                <div key={index}>{line}</div>
               ))}
-            </ul>
+            </div>
           </div>
-        </CardContent>
-        <CardContent className="px-6 pb-6">
-          <div className="flex flex-wrap justify-center gap-2">
-            {skills.map((skill, index) => (
-              <Badge key={index} variant={"secondary"}>
-                {skill}
-              </Badge>
+          <div className="flex-col space-y-3 font-medium text-muted-foreground text-center text-sm md:text-base ">
+            <div>{title}</div>
+            <div>{description}</div>
+          </div>
+          <ul className="list-disc space-y-2 text-sm md:text-base text-left pl-5 leading-loose">
+            {responsibilities.map((item, index) => (
+              <li key={index} className="pl-1">
+                <span className="inline-block align-top">{item}</span>
+              </li>
             ))}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          </ul>
+        </div>
+      </CardContent>
+      <CardContent className="grow px-6 pb-6">
+        <div className="flex flex-wrap justify-center gap-2">
+          {skills.map((skill, index) => (
+            <Badge key={index} variant={"secondary"}>
+              {skill}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
 export const Experience: React.FC = () => {
   const experiences: ExperienceItem[] = [
+    {
+      logo: canonicalLogo,
+      title: "Associate Software Engineer (SaaS Engineering - Landscape)",
+      company: "Canonical",
+      description: "January 2025 - Current",
+      responsibilities: [
+        "Improved perfomance of client package reporting by up to 70%, which was highly requested from customers.",
+      ],
+      skills: [
+        "Python",
+        "Go",
+        "Linux",
+        "Debian",
+        "PostgreSQL",
+        "Git",
+        "Bash",
+        "LXD",
+        "RabbitMQ",
+        "HAProxy",
+        "Terraform",
+        "Juju",
+      ],
+    },
     {
       logo: cseLogo,
       title: "Software Engineer Co-op",
@@ -151,7 +172,7 @@ export const Experience: React.FC = () => {
             Teams I&apos;ve Worked With
           </h2>
 
-          <div className="flex flex-col lg:flex-row gap-6 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
             {experiences.map((exp, index) => (
               <ExperienceCard key={index} {...exp} />
             ))}
