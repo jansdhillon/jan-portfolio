@@ -79,12 +79,14 @@ export const Experience: React.FC = () => {
       company: "Canonical",
       description: "January 2025 - Current",
       responsibilities: [
-        "Improved perfomance of client package reporting by up to 70%, which was highly requested from customers.",
+        "Improved perfomance of client package reporting by up to 70%, which was highly requested by customers.",
+        "Backported the above enhancement to all 6 currently supported versions of the Ubuntu Archive.",
       ],
       skills: [
         "Python",
         "Go",
         "Linux",
+        "Ubuntu",
         "Debian",
         "PostgreSQL",
         "Git",

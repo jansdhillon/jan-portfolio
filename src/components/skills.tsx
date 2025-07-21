@@ -1,10 +1,9 @@
-import { FaReact, FaAws, FaPython, FaNodeJs } from "react-icons/fa";
-import {
-  SiPostgresql, SiGit, SiGo
-} from "react-icons/si";
-import { BiLogoGoogleCloud, BiLogoTypescript } from "react-icons/bi";
+import { FaReact, FaAws, FaPython } from "react-icons/fa";
+import { SiPostgresql, SiGit, SiGo, SiTerraform } from "react-icons/si";
+
+import { BiLogoTypescript } from "react-icons/bi";
 import { Badge } from "@/components/ui/badge";
-import { FaDocker, FaJava, FaLinux } from "react-icons/fa6";
+import { FaDocker, FaJava, FaLinux, FaUbuntu } from "react-icons/fa6";
 import { IconType } from "react-icons/lib";
 import Link from "next/link";
 
@@ -25,18 +24,18 @@ const SkillIcon = ({
 
 export const Skills = () => {
   const skills = [
-    { Icon: FaReact, name: "React" },
-    { Icon: BiLogoGoogleCloud, name: "Google Cloud" },
+    { Icon: FaPython, name: "Python" },
+    { Icon: FaUbuntu, name: "Ubuntu" },
+    { Icon: SiGo, name: "Go" },
+    { Icon: SiTerraform, name: "Terraform" },
     { Icon: FaDocker, name: "Docker" },
+    { Icon: SiGit, name: "Git" },
+    { Icon: FaLinux, name: "Linux", invert: true },
     { Icon: BiLogoTypescript, name: "TypeScript" },
     { Icon: SiPostgresql, name: "PostgreSQL" },
     { Icon: FaAws, name: "AWS" },
-    { Icon: FaPython, name: "Python" },
-    { Icon: FaNodeJs, name: "Node.js" },
-    { Icon: SiGo, name: "Go" },
+    { Icon: FaReact, name: "React" },
     { Icon: FaJava, name: "Java" },
-    { Icon: FaLinux, name: "Linux", invert: true },
-    { Icon: SiGit, name: "Git" },
   ];
 
   return (
