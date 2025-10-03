@@ -9,3 +9,4 @@ count.txt
 .tanstack
 .output
 test-results/.last-run.json
+.netlify
