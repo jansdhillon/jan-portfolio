@@ -1,14 +1,9 @@
-import Image, { StaticImageData } from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
-import ubcLogo from "../../public/ubc.png";
-import cseLogo from "../../public/cse.jpg";
-import atLogo from "../../public/at-yellow.png";
-import canonicalLogo from "../../public/canonical.jpg";
+import type { ReactNode } from "react";
 
 interface ExperienceItem {
-  logo: string | StaticImageData;
+  logo: string | ReactNode;
   title: string;
   company: string;
   description: string;
@@ -16,14 +11,14 @@ interface ExperienceItem {
   skills: string[];
 }
 
-const ExperienceCard: React.FC<ExperienceItem> = ({
+const ExperienceCard = ({
   logo,
   title,
   company,
   description,
   responsibilities,
   skills,
-}) => {
+}: ExperienceItem) => {
   const companyLines = company.split("|");
 
   return (
@@ -31,14 +26,16 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
       <CardContent className="grow pt-6 px-6">
         <div className="flex flex-col gap-8 ">
           <div className={`flex items-center justify-center space-x-5`}>
-            <div className="relative h-[30px] w-[30px]">
-              <Image
-                fill
+            {typeof logo === "string" ? (
+              <img
                 src={logo}
                 alt={`${companyLines[0]} Logo`}
-                className="object-contain"
+                className="h-[30px] w-[30px] object-contain"
+                loading="lazy"
               />
-            </div>
+            ) : (
+              logo
+            )}
             <div className="text-base md:text-lg font-medium text-center line-clamp-3">
               {companyLines.map((line, index) => (
                 <div key={index}>{line}</div>
@@ -71,16 +68,17 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
   );
 };
 
-export const Experience: React.FC = () => {
+export const Experience = () => {
   const experiences: ExperienceItem[] = [
     {
-      logo: canonicalLogo,
+      logo: "/canonical.jpg",
       title: "Associate Software Engineer (SaaS Engineering - Landscape)",
       company: "Canonical",
       description: "January 2025 - Current",
       responsibilities: [
-        "Improved perfomance of client package reporting by up to 70%, which was highly requested by customers.",
-        "Backported the above enhancement to all 6 currently supported versions of the Ubuntu Archive.",
+        "Led Ubuntu SRU release engineering for Landscape Client and Server, packaging across LTS releases and shipping the 78% package reporter performance gain across supported series.",
+        "Resolved critical Python API defects by rewriting the GPG key import endpoint, restoring reliability and expanding automated coverage.",
+        "Built Terraform-driven Landscape demos plus reusable LXD modules that Field, Support, and QA teams use for customer walkthroughs and validation.",
       ],
       skills: [
         "Python",
@@ -95,11 +93,10 @@ export const Experience: React.FC = () => {
         "RabbitMQ",
         "HAProxy",
         "Terraform",
-        "Juju",
       ],
     },
     {
-      logo: cseLogo,
+      logo: "/cse.jpg",
       title: "Software Engineer Co-op",
       company: "Communications Security Establishment (CSE)",
       description: "January 2024 - April 2024",
@@ -120,7 +117,7 @@ export const Experience: React.FC = () => {
       ],
     },
     {
-      logo: atLogo,
+      logo: "/at-yellow.png",
       title: "Software Engineer Co-op",
       company: "Armilla Technology",
       description: "May 2023 - September 2023",
@@ -141,7 +138,7 @@ export const Experience: React.FC = () => {
       ],
     },
     {
-      logo: ubcLogo,
+      logo: "/ubc.png",
       title: "Student Support Analyst I",
       company: "The University of British Columbia (UBC)",
       description: "September 2022 - April 2023",
@@ -165,11 +162,11 @@ export const Experience: React.FC = () => {
     <section className="py-12 md:py-24 lg:py-32 " id="experience">
       <div className="container mx-auto px-10 max-w-7xl">
         <div className="flex flex-col items-center justify-center gap-4 text-center space-y-6">
-          <Link href={"#experience"}>
+          <a href="#experience">
             <Badge className="space-x-2" variant={"secondary"}>
               <div className=" ">💰</div> <p> Experience</p>
             </Badge>
-          </Link>
+          </a>
           <h2 className="text-xl line-clamp-1 md:text-2xl font-semibold text-primary tracking-wide">
             Teams I&apos;ve Worked With
           </h2>
