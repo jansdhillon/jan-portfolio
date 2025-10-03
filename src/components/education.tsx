@@ -1,10 +1,6 @@
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Card, CardDescription } from "./ui/card";
+import { Card } from "./ui/card";
 import { Separator } from "./ui/separator";
-import Link from "next/link";
-import ubcLogo from "../../public/ubc.png";
 
 export const Education = () => {
   return (
@@ -13,11 +9,11 @@ export const Education = () => {
       id="education"
     >
       <div className="flex flex-col items-center justify-center gap-7 text-center">
-        <Link href="#education">
+        <a href="#education">
           <Badge className="space-x-2 " variant={"secondary"}>
             <div>📚</div> <p>Education</p>
           </Badge>
-        </Link>
+        </a>
         <h2 className="text-xl line-clamp-1 md:text-2xl font-semibold text-primary tracking-wide">
           My Academic Journey
         </h2>
@@ -26,13 +22,11 @@ export const Education = () => {
         <div className="flex flex-col justify-center item-center gap-4">
           <div className="flex flex-col items-center justify-center space-y-6">
             <div className="flex items-center  space-x-5">
-              <Image
-                src={ubcLogo}
+              <img
+                src="/ubc.png"
                 alt="UBC"
-                width={30}
-                height={30}
-                quality={100}
-                className="md:pt-1"
+                className="h-[30px] w-[30px] object-contain md:pt-1"
+                loading="lazy"
               />
 
               <h3 className="text-base md:text-lg  font-medium text-center line-clamp-3">

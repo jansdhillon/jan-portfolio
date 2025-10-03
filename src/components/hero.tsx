@@ -3,7 +3,6 @@ import BgGlowContainer from "./bg-glow-container";
 import { Socials } from "./socials";
 import { Separator } from "./ui/separator";
 import Writer from "./writer";
-import { Handjet } from "next/font/google";
 
 const Terminal = () => {
   return (
