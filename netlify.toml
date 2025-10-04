@@ -1,0 +1,7 @@
+[build]
+  command = "vite build"
+  publish = ".output/public"
+
+[dev]
+  command = "vite dev"
+  port = 3000
