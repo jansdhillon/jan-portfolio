@@ -4,6 +4,3 @@
 
 [build.environment]
   NITRO_PRESET = "netlify"
-
-[functions]
-  directory = ".netlify/functions-internal"
